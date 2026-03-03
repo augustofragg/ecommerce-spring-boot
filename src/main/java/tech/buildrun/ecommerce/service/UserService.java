@@ -46,4 +46,16 @@ public class UserService {
         Optional<UserEntity> userEntity = userRepository.findById(userId);
         return  userEntity;
     }
+
+    public boolean deleteById(UUID userId) {
+
+        Optional<UserEntity> user = userRepository.findById(userId);
+
+        if(user.isPresent()) {
+            userRepository.deleteById(user.get().getId());
+            billingAddressRepository.deleteById(user.get().getBillingAddress().getBillingAddressId());
+        }
+
+        return user.isPresent();
+    }
 }
