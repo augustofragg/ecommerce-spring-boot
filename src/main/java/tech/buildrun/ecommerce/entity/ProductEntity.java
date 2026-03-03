@@ -4,6 +4,7 @@ package tech.buildrun.ecommerce.entity;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_products")
@@ -20,6 +21,14 @@ public class ProductEntity {
     @Column(name = "price")
     private BigDecimal productPrice;
 
+    @ManyToMany
+    @JoinTable(
+            name = "tb_products_tags",
+            uniqueConstraints = @UniqueConstraint(columnNames = {"product_id","tag_id"}),
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    private List<TagEntity> tags;
 
     public ProductEntity() {
     }
