@@ -14,10 +14,14 @@ public class UserEntity {
     private UUID id;
 
     @Column(name = "full_name")
-    private String fullname;
+    private String fullName;
 
-    @OneToOne
-    @JoinColumn(name = "billing_address_id")
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "billing_address_id")
+//    private BillingAddressEntity billingAddress;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="billing_address_id")
     private BillingAddressEntity billingAddress;
 
     public UserEntity() {
@@ -31,12 +35,12 @@ public class UserEntity {
         this.id = id;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public BillingAddressEntity getBillingAddress() {
