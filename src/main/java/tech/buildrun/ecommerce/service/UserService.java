@@ -29,13 +29,13 @@ public class UserService {
         billingAddressEntity.setAddress(dto.address());
         billingAddressEntity.setNumber(dto.number());
         billingAddressEntity.setComplement(dto.complement());
-        BillingAddressEntity billingAddresSaved = billingAddressRepository.save(billingAddressEntity);
+//        BillingAddressEntity billingAddresSaved = billingAddressRepository.save(billingAddressEntity);
 
         // Segundo salva o user no banco
 
         UserEntity userEntity = new UserEntity();
         userEntity.setFullName(dto.fullName());
-        userEntity.setBillingAddress(billingAddresSaved);
+        userEntity.setBillingAddress(billingAddressEntity);
         UserEntity userSaved = userRepository.save(userEntity);
 
         return userSaved;
@@ -53,7 +53,7 @@ public class UserService {
 
         if(user.isPresent()) {
             userRepository.deleteById(user.get().getId());
-            billingAddressRepository.deleteById(user.get().getBillingAddress().getBillingAddressId());
+//            billingAddressRepository.deleteById(user.get().getBillingAddress().getBillingAddressId());
         }
 
         return user.isPresent();

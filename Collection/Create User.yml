@@ -10,10 +10,10 @@ http:
     type: json
     data: |-
       {
-        "fullName":"Carlos Augusto",
-        "address":"Avenida Alberto Algusto",
-        "number":"371",
-        "complement":"Figueira"
+        "fullName":"Joao",
+        "address":"Rua A",
+        "number":"6",
+        "complement":"Copacabana"
       }
   auth: inherit
 

@@ -20,7 +20,7 @@ public class UserEntity {
 //    @JoinColumn(name = "billing_address_id")
 //    private BillingAddressEntity billingAddress;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name="billing_address_id")
     private BillingAddressEntity billingAddress;
 
